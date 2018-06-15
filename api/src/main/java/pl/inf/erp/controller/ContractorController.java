@@ -1,14 +1,17 @@
 package pl.inf.erp.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.inf.erp.model.Contractor;
 import pl.inf.erp.repository.ContractorRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/v1/api")
+@Slf4j
 public class ContractorController {
 
     private ContractorRepository contractorRepository;
@@ -19,7 +22,9 @@ public class ContractorController {
 
     @GetMapping(value = "/contractor")
     public ResponseEntity getContractors() {
-        return ResponseEntity.ok(contractorRepository.findAll());
+        List<Contractor> contractorList = contractorRepository.findAll();
+        log.info("Get all contractors");
+        return ResponseEntity.ok(contractorList);
     }
 
     @GetMapping(value = "/contractor/{id}")
