@@ -5,13 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,7 +21,10 @@ public class Product {
 
     private Long cost;
 
-    @ManyToOne
-    @JoinColumn(name = "id_invoice")
-    private CostInvoice invoice;
+    public LocalDate purchaseOfData;
+
+    private double warranty;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    private Set<CostInvoice> invoice;
 }

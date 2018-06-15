@@ -32,7 +32,9 @@ public class CostInvoice {
     @JoinColumn(name = "id_cont")
     private Contractor contractor;
 
-    @OneToMany(mappedBy = "invoice")
+    @ManyToMany
+    @JoinTable(joinColumns = @JoinColumn(name = "invoice_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id"))
     private Set<Product> product;
 
 }

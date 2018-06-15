@@ -4,10 +4,11 @@ spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/erp?useSSL=false
-    password: admin
+    password: root
     username: root
-  jooq:
-    sql-dialect: org.hibernate.dialect.MySQL5Dialect
   jpa:
     hibernate:
       ddl-auto: create
+  jooq:
+    sql-dialect: org.hibernate.dialect.MySQLDialect
+
