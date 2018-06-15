@@ -20,12 +20,12 @@ public class ProductController {
     }
 
     @GetMapping(value = "/product")
-    public ResponseEntity getContractors() {
+    public ResponseEntity getProducts() {
         return ResponseEntity.ok(productRepository.findAll());
     }
 
     @GetMapping(value = "/product/{id}")
-    public ResponseEntity getContractor(@PathVariable Long id) {
+    public ResponseEntity getProduct(@PathVariable Long id) {
         Optional<Product> contractor = productRepository.findById(id);
         if (contractor.isPresent()) {
             return ResponseEntity.ok(contractor);
@@ -35,7 +35,7 @@ public class ProductController {
     }
 
     @PostMapping(value = "/product")
-    public ResponseEntity getHello(@RequestBody Product product) {
+    public ResponseEntity createProduct(@RequestBody Product product) {
         return ResponseEntity.ok(productRepository.save(product));
     }
 }

@@ -19,12 +19,12 @@ public class ServiceController {
     }
 
     @GetMapping(value = "/service")
-    public ResponseEntity getContractors() {
+    public ResponseEntity getServices() {
         return ResponseEntity.ok(serviceRepository.findAll());
     }
 
     @GetMapping(value = "/service/{id}")
-    public ResponseEntity getContractor(@PathVariable Long id) {
+    public ResponseEntity getService(@PathVariable Long id) {
         Optional<Service> contractor = serviceRepository.findById(id);
         if (contractor.isPresent()) {
             return ResponseEntity.ok(contractor);
@@ -34,7 +34,7 @@ public class ServiceController {
     }
 
     @PostMapping(value = "/service")
-    public ResponseEntity getHello(@RequestBody Service service) {
+    public ResponseEntity createService(@RequestBody Service service) {
         return ResponseEntity.ok(serviceRepository.save(service));
     }
 }

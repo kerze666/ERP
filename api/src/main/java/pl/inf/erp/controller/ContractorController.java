@@ -38,7 +38,7 @@ public class ContractorController {
     }
 
     @PostMapping(value = "/contractor")
-    public ResponseEntity getHello(@RequestBody Contractor contractor) {
+    public ResponseEntity createContractor(@RequestBody Contractor contractor) {
         return ResponseEntity.ok(contractorRepository.save(contractor));
     }
 }
