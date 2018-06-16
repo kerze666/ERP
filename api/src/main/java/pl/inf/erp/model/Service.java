@@ -1,5 +1,6 @@
 package pl.inf.erp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,8 @@ public class Service {
 
     private BigDecimal price;
 
-    @ManyToMany(mappedBy = "services")
+    @ManyToMany(mappedBy = "services", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<ServiceInvoice> invoices;
 
 }

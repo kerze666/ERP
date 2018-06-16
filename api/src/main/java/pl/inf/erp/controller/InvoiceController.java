@@ -24,8 +24,8 @@ public class InvoiceController {
     }
 
     @PostMapping(value = "/service")
-    public ResponseEntity createServiceInvoice(@RequestBody CostInvoice costInvoice) {
-        return ResponseEntity.ok(invoiceService.createCostInvoice(costInvoice));
+    public ResponseEntity createServiceInvoice(@RequestBody ServiceInvoice serviceInvoice) {
+        return ResponseEntity.ok(invoiceService.createServiceInvoice(serviceInvoice));
     }
 
     @GetMapping(value = "/cost/{id}")

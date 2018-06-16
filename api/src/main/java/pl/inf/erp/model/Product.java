@@ -1,5 +1,6 @@
 package pl.inf.erp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,5 +27,6 @@ public class Product {
     private double warranty;
 
     @ManyToMany(fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<CostInvoice> invoice;
 }

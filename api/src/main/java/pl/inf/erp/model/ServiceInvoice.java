@@ -28,11 +28,11 @@ public class ServiceInvoice {
 
     private BigDecimal amount;
 
-    @ManyToOne
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "id_cont")
     private Contractor contractor;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(joinColumns = @JoinColumn(name = "invoice_id"),
             inverseJoinColumns = @JoinColumn(name = "service_id"))
     private Set<Service> services;
