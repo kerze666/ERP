@@ -9,6 +9,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+    show-sql: true
   jooq:
     sql-dialect: org.hibernate.dialect.MySQLDialect
 

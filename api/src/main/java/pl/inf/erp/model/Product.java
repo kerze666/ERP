@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -20,13 +21,13 @@ public class Product {
 
     private String name;
 
-    private Long cost;
+    private BigDecimal cost;
 
     public LocalDate purchaseOfData;
 
     private double warranty;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "products",fetch = FetchType.LAZY)
     @JsonIgnore
-    private Set<CostInvoice> invoice;
+    private Set<Invoice> invoice;
 }

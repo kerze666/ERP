@@ -25,6 +25,6 @@ public class Service {
 
     @ManyToMany(mappedBy = "services", fetch = FetchType.LAZY)
     @JsonIgnore
-    private Set<ServiceInvoice> invoices;
+    private Set<Invoice> invoices;
 
 }

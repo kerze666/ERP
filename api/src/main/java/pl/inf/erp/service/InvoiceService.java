@@ -1,37 +1,34 @@
 package pl.inf.erp.service;
 
 import org.springframework.stereotype.Service;
-import pl.inf.erp.model.CostInvoice;
-import pl.inf.erp.model.ServiceInvoice;
+import pl.inf.erp.model.Invoice;
 import pl.inf.erp.repository.CostInvoiceRepository;
-import pl.inf.erp.repository.ServiceInvoiceRepository;
+import pl.inf.erp.repository.InvoiceRepository;
 
 import java.util.Optional;
 
 @Service
 public class InvoiceService {
 
-    private CostInvoiceRepository costInvoiceRepository;
 
-    private ServiceInvoiceRepository serviceInvoiceRepository;
+    private InvoiceRepository invoiceRepository;
 
-    public InvoiceService(CostInvoiceRepository costInvoiceRepository, ServiceInvoiceRepository serviceInvoiceRepository) {
-        this.costInvoiceRepository = costInvoiceRepository;
-        this.serviceInvoiceRepository = serviceInvoiceRepository;
+    public InvoiceService(CostInvoiceRepository costInvoiceRepository, InvoiceRepository invoiceRepository) {
+        this.invoiceRepository = invoiceRepository;
     }
 
-    public CostInvoice createCostInvoice(CostInvoice invoice){
+    public Invoice createCostInvoice(Invoice invoice){
         return costInvoiceRepository.save(invoice);
     }
 
     public ServiceInvoice createServiceInvoice(ServiceInvoice invoice){
-        return serviceInvoiceRepository.save(invoice);
+        return invoiceRepository.save(invoice);
     }
-    public Optional<CostInvoice> getCostInvoice(Long id){
+    public Optional<Invoice> getCostInvoice(Long id){
         return costInvoiceRepository.findById(id);
     }
 
     public Optional<ServiceInvoice> getServiceInvoice(Long id){
-        return serviceInvoiceRepository.findById(id);
+        return invoiceRepository.findById(id);
     }
 }
