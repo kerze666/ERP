@@ -23,7 +23,7 @@ public class InvoiceController {
         return ResponseEntity.ok(invoiceService.createInvoice(invoice));
     }
 
-    @GetMapping(value = "/{type}")
+    @GetMapping(value = "/type/{type}")
     public ResponseEntity getInvoicesByType(@PathVariable("type") InvoiceType type) {
         return ResponseEntity.ok(invoiceService.getInvoicesByType(type));
     }

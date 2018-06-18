@@ -1,28 +1,29 @@
 package pl.inf.erp.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Invoice {
+public class Invoice implements Serializable {
 
     @Id
     @Column(name = "id_invoice")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate dataOfIssue;
+    private Date dataOfIssue;
 
-    private LocalDate deadline;
+    private Date deadline;
 
     private boolean isPaid;
 

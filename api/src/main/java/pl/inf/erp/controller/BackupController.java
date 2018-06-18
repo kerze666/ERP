@@ -1,5 +1,6 @@
 package pl.inf.erp.controller;
 
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
 import pl.inf.erp.service.BackupService;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 @RestController
 @RequestMapping(value = "/v1/api/")
@@ -19,20 +22,21 @@ public class BackupController {
         this.backupService = backupService;
     }
 
-    @GetMapping(value = "/import" )
+    @PostMapping(value = "/import" )
     public ResponseEntity importBackup(@RequestParam("backup") MultipartFile backup){
-        return null;
+        backupService.restore(backup);
+        return ResponseEntity.ok("Restored");
 
     }
 
-    @PostMapping(value = "/export")
-    public ResponseEntity exportBackup(){
+    @GetMapping(value = "/export", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    public ResponseEntity exportBackup() throws FileNotFoundException {
         File file = backupService.makeBackup();
-
+        InputStreamResource inputStreamResource = new InputStreamResource(new FileInputStream(file));
         return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename="+file.getName())
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getName()+ "\"")
-                .body(file);
+                .body(inputStreamResource);
     }
 
 }

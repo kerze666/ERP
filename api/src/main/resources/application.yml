@@ -11,4 +11,5 @@ spring:
       ddl-auto: create
   jooq:
     sql-dialect: org.hibernate.dialect.MySQLDialect
-
+temp:
+  directory: C:/Programing/erp/temp

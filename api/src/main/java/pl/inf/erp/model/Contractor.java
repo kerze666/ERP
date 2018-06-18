@@ -5,13 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Contractor {
+public class Contractor implements Serializable {
 
     @Id
     @Column(name = "id_cont")
