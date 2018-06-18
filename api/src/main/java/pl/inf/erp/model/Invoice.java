@@ -36,13 +36,13 @@ public class Invoice {
     private Contractor contractor;
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinTable(name = "inv_prod",joinColumns = @JoinColumn(name = "invoice_id"),
+    @JoinTable(name = "inv_prod", joinColumns = @JoinColumn(name = "invoice_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
     private Set<Product> products;
 
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinTable(name = "inv_serv",joinColumns = @JoinColumn(name = "invoice_id"),
+    @JoinTable(name = "inv_serv", joinColumns = @JoinColumn(name = "invoice_id"),
             inverseJoinColumns = @JoinColumn(name = "service_id"))
     private Set<Service> services;
 }
