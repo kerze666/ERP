@@ -13,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/v1/api/")
 public class BackupController {
 

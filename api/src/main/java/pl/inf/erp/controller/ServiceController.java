@@ -9,6 +9,7 @@ import pl.inf.erp.repository.ServiceRepository;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/v1/api")
 public class ServiceController {
 

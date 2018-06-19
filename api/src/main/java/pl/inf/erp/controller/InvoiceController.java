@@ -9,6 +9,7 @@ import pl.inf.erp.service.InvoiceService;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/v1/api/invoice")
 public class InvoiceController {
 
