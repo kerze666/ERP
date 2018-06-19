@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>ERP application</title>
+    </head>
+    <body>
+        <div id="navigation">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contractor.html">Contractors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="invoice.html">Invoice</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="service.html">Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="backup.html">Backup</a>
+                </li>
+            </ul>
+        </div>
+        
+        <div id="pageTitle" class="container-fluid">
+            <div class="jumbotron jumbotron-fluid text-center text-secondary">
+                <h1 class="font-weight-bold">Products</h1>
+            </div>
+        </div>
+        
+        <div id="content" class="container">
+            <div class="card-columns text-center">
+                <div class="card">
+                    <a href="#findProduct" data-toggle="collapse">
+                        <div class="card-body text-white bg-dark">
+                            Find product
+                        </div>
+                    </a>
+                </div>
+                <div id="listAllProducts" class="card">
+                    <a href="#">
+                        <div class="card-body text-white bg-dark">
+                            List all products
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="#addProduct" data-toggle="collapse">
+                        <div class="card-body text-white bg-dark">
+                            Add product
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="findProduct" class="collapse">
+                <form id="findProductForm">
+                    <div class="input-group">
+                        <input type="number" name="id" placeholder="Id" required class="form-control">
+                        <button type="submit" class="btn btn-primary float-right">Find</button>
+                    </div>
+                </form> 
+            </div>
+            <div id="addProduct" class="collapse">
+                <form id="addProductForm">
+                    <div class="form-group">
+                        <input type="text" name="name" required placeholder="Name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" placeholder="Cost" step=".01" name="cost" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" onfocus="(this.type='date')" placeholder="Purchase of data" name="purchaseOfData" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" step=".1" placeholder="Warranty" name="warranty" required class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right">Add</button>
+                </form> 
+            </div>
+            <div id="result" class="d-none">
+                <table id="resultTable" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Product id</th>
+                            <th>Product name</th>
+                            <th>Product cost</th>
+                            <th>Product purchaseOfData</th>
+                            <th>Product warranty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div id="error" class="d-none text-center">
+                <div class="card">
+                    <div class="card-header bg-danger">Error</div>
+                    <div id="errorContent" class="card-body"></div> 
+                </div>
+            </div>
+        </div>
+        
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/general.js"></script>
+        <script src="js/product.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
