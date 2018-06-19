@@ -17,14 +17,14 @@ import java.util.Set;
 public class Service implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
 
     private BigDecimal price;
 
-    @ManyToMany(mappedBy = "services", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "services", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JsonIgnore
     private Set<Invoice> invoices;
 

@@ -18,7 +18,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class Product implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
@@ -29,7 +29,7 @@ public class Product implements Serializable {
 
     private double warranty;
 
-    @ManyToMany(mappedBy = "products",fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "products",fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JsonIgnore
     private Set<Invoice> invoice;
 }

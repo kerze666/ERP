@@ -1,18 +1,19 @@
 package pl.inf.erp.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import pl.inf.erp.exception.FileNotFoundException;
 import pl.inf.erp.model.Invoice;
 import pl.inf.erp.repository.InvoiceRepository;
 import pl.inf.erp.utils.DateUtils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -35,15 +36,15 @@ public class BackupService {
         this.pathToTemp = pathToTemp;
     }
 
-    public File makeBackup() {
+    public InputStreamResource makeBackup() {
         try {
             String json = objectMapper.writeValueAsString(serviceRepository.findAll());
             Path path = Files.createFile(Paths.get(String.format("%s/backup_%s.txt", pathToTemp, DateUtils.currentData())));
             Files.write(path, json.getBytes(), StandardOpenOption.APPEND);
-            return path.toFile();
+            return new InputStreamResource(new FileInputStream(path.toFile()));
         } catch (IOException e) {
-            log.error(e.getMessage());
-            throw new RuntimeException(e);
+            log.error("File not found", e);
+            throw new FileNotFoundException(e);
         }
     }
 
@@ -54,7 +55,8 @@ public class BackupService {
             serviceRepository.deleteAll();
             serviceRepository.saveAll(data);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("File not found", e);
+            throw new FileNotFoundException(e);
         }
     }
 
