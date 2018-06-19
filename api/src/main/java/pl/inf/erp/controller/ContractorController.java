@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/v1/api")
 @Slf4j
 public class ContractorController {

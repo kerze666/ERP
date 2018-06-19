@@ -10,6 +10,7 @@ import pl.inf.erp.repository.ProductRepository;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/v1/api")
 public class ProductController {
 

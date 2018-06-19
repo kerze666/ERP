@@ -12,6 +12,7 @@ import pl.inf.erp.service.BackupService;
 import java.io.FileNotFoundException;
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/v1/api/")
 @Slf4j
 public class BackupController {
